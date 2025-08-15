@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef,useState} from 'react';
 import { gsap } from 'gsap';
 import './App.css';
 import styles from './App.module.css';
@@ -11,9 +11,9 @@ import Scene4 from './components/Scene4';
 gsap.registerPlugin();
 
 function App() {
-  const masterTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const [masterTimeline, setMasterTimeline] = useState<gsap.core.Timeline | null>(null)
   const progressFillRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     // Create a master timeline
     const masterTimeline = gsap.timeline({
@@ -29,25 +29,25 @@ function App() {
       }
     });
     
-    masterTimelineRef.current = masterTimeline;
+    setMasterTimeline(masterTimeline);
     
     // Play the timeline
     masterTimeline.play();
     
     // Cleanup function
     return () => {
-      if (masterTimelineRef.current) {
-        masterTimelineRef.current.kill();
+      if (masterTimeline) {
+        masterTimeline.kill();
       }
     };
   }, []);
 
   return (
     <div className={styles.app}>
-      <Scene1 timelineRef={masterTimelineRef} />
-      <Scene2 timelineRef={masterTimelineRef} />
-      <Scene3 timelineRef={masterTimelineRef} />
-      <Scene4 timelineRef={masterTimelineRef} />
+      <Scene1 timeline={masterTimeline} />
+      <Scene2 timeline={masterTimeline} />
+      <Scene3 timeline={masterTimeline} />
+      <Scene4 timeline={masterTimeline} />
       <div className={styles.progressBar}>
         <div className={styles.progressFill} ref={progressFillRef}></div>
       </div>

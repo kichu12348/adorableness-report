@@ -3,10 +3,10 @@ import { gsap } from "gsap";
 import styles from "./Scene4.module.css";
 
 interface Scene4Props {
-  timelineRef: React.RefObject<gsap.core.Timeline | null>;
+  timeline: gsap.core.Timeline | null;
 }
 
-const Scene4: React.FC<Scene4Props> = ({ timelineRef }) => {
+const Scene4: React.FC<Scene4Props> = ({ timeline }) => {
   const sceneRef = useRef<HTMLDivElement>(null);
   const verdictRef = useRef<HTMLDivElement>(null);
   const signatureRef = useRef<HTMLDivElement>(null);
@@ -18,11 +18,11 @@ const Scene4: React.FC<Scene4Props> = ({ timelineRef }) => {
       !verdictRef.current ||
       !signatureRef.current ||
       !heartsContainerRef.current ||
-      !timelineRef.current
+      !timeline
     )
       return;
 
-    const tl = timelineRef.current.addLabel("scene4");
+    const tl = timeline.addLabel("scene4");
     const createHearts = () => {
       const heartsContainer = heartsContainerRef.current;
       if (!heartsContainer) return;
@@ -81,7 +81,7 @@ const Scene4: React.FC<Scene4Props> = ({ timelineRef }) => {
 
     // Cleanup
     return () => {};
-  }, [timelineRef]);
+  }, [timeline]);
 
   return (
     <div className={styles.scene} ref={sceneRef}>

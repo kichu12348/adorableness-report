@@ -3,20 +3,20 @@ import { gsap } from "gsap";
 import styles from "./Scene1.module.css";
 
 interface Scene1Props {
-  timelineRef: React.RefObject<gsap.core.Timeline | null>;
+  timeline: gsap.core.Timeline | null;
 }
 
-const Scene1: React.FC<Scene1Props> = ({ timelineRef }) => {
+const Scene1: React.FC<Scene1Props> = ({ timeline }) => {
   const sceneRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const text = "I heard you were saying something silly about yourself…";
 
   useEffect(() => {
-    if (!sceneRef.current || !textRef.current || !timelineRef.current) return;
+    if (!sceneRef.current || !textRef.current || !timeline) return;
 
     const typewriterTL = gsap.timeline();
 
-    timelineRef.current
+    timeline
 
       .set(sceneRef.current, { autoAlpha: 1 })
 
@@ -47,7 +47,7 @@ const Scene1: React.FC<Scene1Props> = ({ timelineRef }) => {
     return () => {
       typewriterTL.kill();
     };
-  }, [timelineRef]);
+  }, [timeline]);
 
   return (
     <div className={styles.scene} ref={sceneRef}>

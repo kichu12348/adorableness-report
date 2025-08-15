@@ -10,10 +10,10 @@ import {
 } from "react-icons/fa";
 
 interface Scene3Props {
-  timelineRef: React.RefObject<gsap.core.Timeline | null>;
+  timeline: gsap.core.Timeline | null;
 }
 
-const Scene3: React.FC<Scene3Props> = ({ timelineRef }) => {
+const Scene3: React.FC<Scene3Props> = ({ timeline }) => {
   const sceneRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const evidenceARef = useRef<HTMLDivElement>(null);
@@ -33,11 +33,11 @@ const Scene3: React.FC<Scene3Props> = ({ timelineRef }) => {
       !evidenceDRef.current ||
       !evidenceERef.current ||
       !evidenceFRef.current ||
-      !timelineRef.current
+      !timeline
     )
       return;
 
-    const tl = timelineRef.current.addLabel("scene3");
+    const tl = timeline.addLabel("scene3");
 
     tl.set(sceneRef.current, { autoAlpha: 1 })
 
@@ -138,7 +138,7 @@ const Scene3: React.FC<Scene3Props> = ({ timelineRef }) => {
       .to({}, { duration: 0.3 });
 
     return () => {};
-  }, [timelineRef]);
+  }, [timeline]);
 
   return (
     <div className={styles.scene} ref={sceneRef}>

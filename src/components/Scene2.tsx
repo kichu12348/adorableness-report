@@ -3,10 +3,10 @@ import { gsap } from "gsap";
 import styles from "./Scene2.module.css";
 
 interface Scene2Props {
-  timelineRef: React.RefObject<gsap.core.Timeline | null>;
+  timeline: gsap.core.Timeline | null;
 }
 
-const Scene2: React.FC<Scene2Props> = ({ timelineRef }) => {
+const Scene2: React.FC<Scene2Props> = ({ timeline }) => {
   const sceneRef = useRef<HTMLDivElement>(null);
   const chubbyRef = useRef<HTMLDivElement>(null);
   const adorableRef = useRef<HTMLDivElement>(null);
@@ -18,11 +18,11 @@ const Scene2: React.FC<Scene2Props> = ({ timelineRef }) => {
       !chubbyRef.current ||
       !adorableRef.current ||
       !proofRef.current ||
-      !timelineRef.current
+      !timeline
     )
       return;
 
-    const tl = timelineRef.current.addLabel("scene2");
+    const tl = timeline.addLabel("scene2");
 
     tl.set(sceneRef.current, { autoAlpha: 1 })
       .fromTo(
@@ -43,10 +43,14 @@ const Scene2: React.FC<Scene2Props> = ({ timelineRef }) => {
         }
       )
       .to(chubbyRef.current, {
+        textDecoration: "line-through",
+        color: "#6b6b6b",
+        duration: 0.5,
+      })
+      .to(chubbyRef.current, {
         x: "-=50vw",
         opacity: 0,
         delay: 0.5,
-        textDecoration: "line-through",
         duration: 0.5,
         ease: "power1.inOut",
       })
@@ -96,7 +100,7 @@ const Scene2: React.FC<Scene2Props> = ({ timelineRef }) => {
       );
 
     return () => {};
-  }, [timelineRef]);
+  }, [timeline]);
 
   return (
     <div className={styles.scene} ref={sceneRef}>
