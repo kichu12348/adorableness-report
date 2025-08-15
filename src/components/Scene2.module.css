@@ -1,0 +1,75 @@
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #FFE6E6, #E6F7FF);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.wordContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.wordWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.word {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.slash {
+  display: none;
+}
+
+.adorableContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adorable {
+  color: #FF7FA2;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.proofText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #FF7FA2;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .word {
+    font-size: 2.5rem;
+  }
+  
+  .adorable {
+    font-size: 2rem;
+  }
+  
+  .proofText {
+    font-size: 1.2rem;
+  }
+}

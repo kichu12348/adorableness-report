@@ -1,0 +1,64 @@
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #FFE6E6, #E6F7FF);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.verdictContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.verdict {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #FF7FA2; /* Cute Pink */
+  text-align: center;
+  max-width: 85%;
+  opacity: 0;
+  line-height: 1.3;
+}
+
+.signature {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #333333;
+  margin-top: 20px;
+  opacity: 0;
+}
+
+.heartsContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  color: #FFB6C1;
+  font-size: 1.5rem;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .verdict {
+    font-size: 2rem;
+  }
+  
+  .signature {
+    font-size: 1.5rem;
+  }
+}
