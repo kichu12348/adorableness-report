@@ -8,6 +8,8 @@ import Scene2 from './components/Scene2';
 import Scene3 from './components/Scene3';
 import Scene4 from './components/Scene4';
 
+gsap.registerPlugin();
+
 function App() {
   const masterTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const progressFillRef = useRef<HTMLDivElement>(null);
